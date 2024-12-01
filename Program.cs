@@ -25,11 +25,11 @@ while (queue1.Count > 0 && queue2.Count > 0)
 {
     int item1 = queue1.Dequeue(), item2 = queue2.Dequeue();
     ansPart1 += Math.Abs(item1 - item2);
-    if (!part2Dict.ContainsKey(item1))
+    if (!part2Dict.TryGetValue(item1, out var value))
     {
         continue;
     }
-    ansPart2 += item1 * part2Dict[item1];
+    ansPart2 += item1 * value;
 }
 
 Console.WriteLine($"First part: {ansPart1}");
